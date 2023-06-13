@@ -1,0 +1,37 @@
+﻿@model List<LastClinc.ViewModels.UserRoleViewModel>
+@{
+    ViewData["Title"] = "EditUserRole";
+}
+
+<h1>EditUserRole</h1>
+
+<hr />
+<form method="post">
+    <div class="card">
+        <div class="card-header">
+            <h2>Add or remove users from this role</h2>
+        </div>
+        <div class="card-body">
+            @for (int item = 0; item < Model.Count; item++)
+            {
+                <div class="form-check m-1">
+                    <input type="hidden" asp-for="@Model[item].UserId" />
+                    <input asp-for="@Model[item].IsSelected" class="form-check-input" />
+                    <label class="form-check-label" asp-for="@Model[item].IsSelected">@Model[item].UserName</label>
+                </div>
+            }
+            <div class="card-footer">
+                <input type="submit" class="btn btn-primary" value="Save" />
+                <a asp-action="EditRole" asp-route-roleId="roleId">Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index" class="btn btn-outline-info">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

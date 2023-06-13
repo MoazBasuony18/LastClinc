@@ -1,0 +1,110 @@
+﻿@model IEnumerable<LastClinc.Models.PatientDataForDoctor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <span>Special Habbit</span>
+            </th>
+            <th>
+                <span>Occupation</span>
+            </th>
+            <th>
+                <span>MaritalStatus</span>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medicine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diagnosis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PastHistory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exmination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Investigations)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Treatment)
+            </th>
+            <th>
+                <span>Age</span>
+            </th>
+            <th>
+                <span>Name</span>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatientData.SpecialHabbit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatientData.Occupation)
+                </td>
+                <td>
+                    @if (item.PatientData.MaritalStatus == true)
+                    {
+                        <span>متزوج</span>
+                    }
+                    else
+                    {
+                        <span>اعزب</span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medicine)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diagnosis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Complain)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PastHistory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Exmination)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Investigations)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Treatment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatientData.PatientAge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PatientData.PatientName)
+                </td>
+                <td></td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
